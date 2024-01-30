@@ -1,7 +1,7 @@
 let randomNumber, attempts;
 
 function startGame() {
-    randomNumber = Math.floor(Math.random() * 90) + 1;
+    randomNumber = Math.floor(Math.random() * 100) + 1;
     attempts = 0;
 
     document.getElementById('attempts').textContent = attempts;
@@ -19,8 +19,8 @@ function checkGuess() {
 
     const userGuess = parseInt(guessInput.value);
 
-    if (isNaN(userGuess) || userGuess < 1 || userGuess > 90) {
-        message.textContent = 'Por favor, digite um número válido entre 1 e 90.';
+    if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
+        message.textContent = 'Por favor, digite um número válido entre 1 e 100.';
     } else {
         attempts++;
 
