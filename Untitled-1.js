@@ -1,7 +1,35 @@
+let minNumber, maxNumber;
 let randomNumber, attempts;
 
+function changeDifficulty() {
+    const difficultySelect = document.getElementById('difficulty');
+    const selectedDifficulty = difficultySelect.value;
+
+    // Defina as faixas de números com base na dificuldade
+    switch (selectedDifficulty) {
+        case 'easy':
+            minNumber = 1;
+            maxNumber = 5;
+            break;
+        case 'medium':
+            minNumber = 1;
+            maxNumber = 10;
+            break;
+        case 'hard':
+            minNumber = 1;
+            maxNumber = 20;
+            break;
+        default:
+            minNumber = 1;
+            maxNumber = 10;
+    }
+
+    // Reinicie o jogo com a nova dificuldade
+    startGame();
+}
+
 function startGame() {
-    randomNumber = Math.floor(Math.random() * 100) + 1;
+    randomNumber = Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber;
     attempts = 0;
 
     document.getElementById('attempts').textContent = attempts;
@@ -19,8 +47,8 @@ function checkGuess() {
 
     const userGuess = parseInt(guessInput.value);
 
-    if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
-        message.textContent = 'Por favor, digite um número válido entre 1 e 100.';
+    if (isNaN(userGuess) || userGuess < minNumber || userGuess > maxNumber) {
+        message.textContent = `Por favor, digite um número válido entre ${minNumber} e ${maxNumber}.`;
     } else {
         attempts++;
 
